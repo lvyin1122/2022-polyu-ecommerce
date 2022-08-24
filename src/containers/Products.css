@@ -1,0 +1,22 @@
+.products {
+    display: flex;
+    justify-content: center;
+}
+
+.productsContainer {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
