@@ -1,14 +1,16 @@
 import React from "react";
 import "./Item.css"
 
-const Item = () => {
+const Item = (props) => {
+  const price = `$${props.price.toFixed(2)}`;
+
   return (
     <div className="item">
-      <img src="https://cdn.thenewstack.io/media/2022/05/600b72f9-react-1024x680.png" />
+      <img className="itemImage" src={props.imgSrc} />
       <div className="info">
-        <h3>React 101 - From Beginner to Expert</h3>
-        <span className="author">John Doe</span>
-        <span className="price">$9.99</span>
+        <h3 className="itemTitle">{props.title}</h3>
+        <span className="author">{props.author}</span>
+        <span className="price">{price}</span>
       </div>
     </div>
   );

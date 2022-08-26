@@ -1,0 +1,39 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(https://sapiensnetwork.eu/wp-content/uploads/2021/01/gradient-background-02.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 1024px;
+    height: 480px;
+    flex-direction: column;
+}
+
+.heroTitle {
+    font-size: 48px;
+    font-weight: 500;
+    color: aliceblue;
+    margin: 0 48px;
+}
+
+.heroText {
+    font-size: 20px;
+    font-weight: normal;
+    color: aliceblue;
+    margin: 0 120px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.heroButton {
+    font-size: 22px;
+    font-weight: 500;
+    color: aliceblue;
+    padding: 10px 20px;
+    border: .2rem solid aliceblue;
+    border-radius: 2rem;
+    cursor: pointer;
+    margin: 32px 0;
+    text-decoration: none;
+}
