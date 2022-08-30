@@ -1,0 +1,42 @@
+.detail {
+    display: flex;
+    justify-content: center;
+}
+
+.detailContainer {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.productDetail {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.productDetailLeft {
+    flex: 1;
+    width:auto;
+}
+
+.productDetailRight {
+    flex: 2;
+    width: 100%;
+    height: 500px;
+    background-color: aqua;
+}
+
+.detailImg {
+    flex: 1;
+    width: auto;
+    height: 256px;
+    object-fit: cover;
+    box-shadow: 0 1.5rem 1.5rem rgba(0,0,0,.1);
+}
