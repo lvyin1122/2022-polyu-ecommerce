@@ -1,26 +1,51 @@
-import React from "react";
+import Carousel from 'react-bootstrap/Carousel';
+import "./Carousel.css";
+import home_image1 from "../../assets/home_image1.png"
+import home_image2 from "../../assets/home_image2.png"
+import home_image3 from "../../assets/home_image3.png"
 
-const Carousel = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const handleClick = (direction) => {
-    if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
-    } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
-    }
-  };
+const CarouselFade = () => {
   return (
-    <div className="carousel">
-      <div className="arrow" onClick={()=> handlClick("left")}></div>
-      <div className="carouselWrapper">
-        <div className="carouselItem">
-          <div className="carouselImage"></div>
-          <div className="carouselInfo"></div>
-        </div>
-      </div>
-      <div className="arrow" onClick={()=> handlClick("right")}></div>
-    </div>
-  );
-};
+    <Carousel fade className="carousel">
+      <Carousel.Item className="carouselItem">
+        <img
+          className="d-block w-100 carouselImg"
+          src={home_image1}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item className="carouselItem">
+        <img
+          className="d-block w-100 carouselImg"
+          src={home_image2}
+          alt="Second slide"
+        />
 
-export default Carousel;
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item className="carouselItem">
+        <img
+          className="d-block w-100 carouselImg"
+          src={home_image3}
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  );
+}
+
+export default CarouselFade;

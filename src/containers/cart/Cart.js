@@ -30,7 +30,7 @@ const Cart = () => {
   return (
     <div className="cartContainer">
       <ul className="cartList">
-        <h1>Shopping Cart</h1>
+        <h1 className="cartHeading">Shopping Cart</h1>
         {isCartEmpty && <>Your cart is empty.</>}
         {!isCartEmpty && cartList}
       </ul>

@@ -40,12 +40,12 @@ const [btnClicked, setBtnClicked] = useState(false);
               <p>{detail.price}</p>
             </div>
             <div className="productDetailLeftBottom">
-              <button className="infoRight" onClick={addToCartHandler}>
+              <button className="detailButton" onClick={addToCartHandler}>
                 {btnClicked ? "Added" : "Add to cart"}
               </button>
             </div>
           </div>
-          <img className="detailImg" src={detail.imgSrc} />
+          <img className="detailImg" src={detail.imgSrc} alt=""/>
         </div>
         <div>
           <h3>Introduction</h3>

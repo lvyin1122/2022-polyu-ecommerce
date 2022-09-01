@@ -27,7 +27,7 @@ const data = [
     _id: 3,
     title: "NodeJS Bootcamp",
     author: "John Doe",
-    price: 9.99,
+    price: 13.99,
     imgSrc:
       "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
   },
@@ -37,6 +37,38 @@ const data = [
     author: "John Doe",
     price: 9.99,
     imgSrc: "https://miro.medium.com/max/730/1*ND2d6CvH-Cz0dp5I_tYalQ.png",
+  },
+  {
+    _id: 5,
+    title: "Python: Zero to Mastery",
+    author: "John Doe",
+    price: 10.99,
+    imgSrc:
+      "https://bytesofintelligence.co.uk/wp-content/uploads/2021/06/python.jpeg",
+  },
+  {
+    _id: 6,
+    title: "Example7",
+    author: "John Doe",
+    price: 13.99,
+    imgSrc:
+      "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
+  },
+  {
+    _id: 7,
+    title: "Example8",
+    author: "John Doe",
+    price: 9.99,
+    imgSrc:
+      "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
+  },
+  {
+    _id: 8,
+    title: "Example9",
+    author: "John Doe",
+    price: 10.99,
+    imgSrc:
+      "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
   },
 ];
 
