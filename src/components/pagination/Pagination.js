@@ -18,11 +18,7 @@ const PaginationBasic = (props) => {
   return (
     <div>
       <Pagination size="lg">
-        <Pagination.First onClick={() => props.setActive(1)}/>
-        <Pagination.Prev disabled={props.active===1} onClick={() => props.setActive(props.active-1)}/>
         {items}
-        <Pagination.Next disabled={props.active===props.numPages} onClick={() => props.setActive(props.active >= props.numPages ? props.numPages : props.active+1)}/>
-        <Pagination.Last onClick={() => props.setActive(props.numPages)}/>
       </Pagination>
     </div>
   );

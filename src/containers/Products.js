@@ -4,7 +4,7 @@ import Item from "../components/item/Item";
 import Carousel from "../components/carousel/Carousel";
 import allData from "../dummyData";
 import PaginationBasic from "../components/pagination/Pagination";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Products = () => {
   const limit = 6;

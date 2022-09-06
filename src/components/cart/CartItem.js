@@ -13,7 +13,7 @@ const CartItem = (props) => {
   return (
     <li className="cartItem">
       <Link to={`/product/${props.id}`} className="cartItemImgLink">
-        <img className="cartItemImg" src={props.imgSrc} />
+        <img className="cartItemImg" src={props.imgSrc} alt=""/>
       </Link>
       <div className="cartItemCenter">
         <Link to={`/product/${props.id}`} className="cartItemName">
