@@ -23,7 +23,7 @@ const CartItem = (props) => {
       </div>
       <div className="cartItemRight">
         <span>${props.price}</span>
-        <span className="removeItem" onClick={removeHandler}>
+        <span className="cartItemRemove" onClick={removeHandler}>
           Remove
         </span>
       </div>

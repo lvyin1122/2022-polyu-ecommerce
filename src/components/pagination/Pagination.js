@@ -8,7 +8,7 @@ const PaginationBasic = (props) => {
       <Pagination.Item
         key={number}
         active={number === props.active}
-        onClick={() => props.setActive(number)}
+        onClick={() => props.setPage(number)}
       >
         {number}
       </Pagination.Item>

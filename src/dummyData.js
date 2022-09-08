@@ -1,7 +1,7 @@
 const data = [
   {
     _id: 0,
-    title: "React: From Beginner to Expert",
+    name: "React: From Beginner to Expert",
     author: "John Doe",
     price: 9.99,
     imgSrc:
@@ -9,7 +9,7 @@ const data = [
   },
   {
     _id: 1,
-    title: "Neural Networks from Scratch",
+    name: "Neural Networks from Scratch",
     author: "John Smith",
     price: 9.99,
     imgSrc:
@@ -17,7 +17,7 @@ const data = [
   },
   {
     _id: 2,
-    title: "JavaScript: The Complete Guide",
+    name: "JavaScript: The Complete Guide",
     author: "Stephen Lee",
     price: 9.99,
     imgSrc:
@@ -25,7 +25,7 @@ const data = [
   },
   {
     _id: 3,
-    title: "NodeJS Bootcamp",
+    name: "NodeJS Bootcamp",
     author: "John Doe",
     price: 13.99,
     imgSrc:
@@ -33,14 +33,14 @@ const data = [
   },
   {
     _id: 4,
-    title: "The Complete iOS Development Bootcamp",
+    name: "The Complete iOS Development Bootcamp",
     author: "John Doe",
     price: 9.99,
     imgSrc: "https://miro.medium.com/max/730/1*ND2d6CvH-Cz0dp5I_tYalQ.png",
   },
   {
     _id: 5,
-    title: "Python: Zero to Mastery",
+    name: "Python: Zero to Mastery",
     author: "John Doe",
     price: 10.99,
     imgSrc:
@@ -48,7 +48,7 @@ const data = [
   },
   {
     _id: 6,
-    title: "Example7",
+    name: "Example7",
     author: "John Doe",
     price: 13.99,
     imgSrc:
@@ -56,7 +56,7 @@ const data = [
   },
   {
     _id: 7,
-    title: "Example8",
+    name: "Example8",
     author: "John Doe",
     price: 9.99,
     imgSrc:
@@ -64,7 +64,7 @@ const data = [
   },
   {
     _id: 8,
-    title: "Example9",
+    name: "Example9",
     author: "John Doe",
     price: 10.99,
     imgSrc:

@@ -16,9 +16,9 @@ const Item = (props) => {
     } else {
       cartCtx.addItem({
         id: props.id,
-        name: props.title,
+        name: props.name,
         price: props.price,
-        img: props.imgSrc,
+        imgSrc: props.imgSrc,
         author: props.author,
         amount: 1,
       });
@@ -32,8 +32,8 @@ const Item = (props) => {
         <img className="itemImage" src={props.imgSrc} alt=""/>
       </Link>
       <div className="info">
-        <Link to={`/product/${props.id}`} className="itemTitle">
-          {props.title}
+        <Link to={`/product/${props.id}`} className="itemName">
+          {props.name}
         </Link>
         <div className="infoBottom">
           <div className="infoLeft">

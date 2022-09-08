@@ -1,9 +1,9 @@
 import React from "react";
 import "./Products.css";
-import Item from "../components/item/Item";
-import Carousel from "../components/carousel/Carousel";
-import allData from "../dummyData";
-import PaginationBasic from "../components/pagination/Pagination";
+import Item from "../../components/item/Item";
+import Carousel from "../../components/carousel/Carousel";
+import allData from "../../dummyData";
+import PaginationBasic from "../../components/pagination/Pagination";
 import { useState } from "react";
 
 const Products = () => {
@@ -18,7 +18,7 @@ const Products = () => {
     <Item
       key={data._id}
       id={data._id}
-      title={data.title}
+      name={data.name}
       author={data.author}
       price={data.price}
       imgSrc={data.imgSrc}
@@ -28,14 +28,13 @@ const Products = () => {
   return (
     <div className="products">
       <div className="productsContainer">
-        {/* <Hero /> */}
         <Carousel />
         <h1 id="title-1">Top Sellers</h1>
         <div className="boxContainer">{productsList}</div>
         <PaginationBasic
           active={page}
           numPages={numPages}
-          setActive={setPage}
+          setPage={setPage}
         />
       </div>
     </div>

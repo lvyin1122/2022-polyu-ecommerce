@@ -6,10 +6,10 @@ import home_image3 from "../../assets/home_image3.png"
 
 const CarouselFade = () => {
   return (
-    <Carousel fade className="carousel">
+    <Carousel fade className="carousel" interval={500}>
       <Carousel.Item className="carouselItem">
         <img
-          className="d-block w-100 carouselImg"
+          className="w-100 carouselImg"
           src={home_image1}
           alt="First slide"
         />
@@ -20,7 +20,7 @@ const CarouselFade = () => {
       </Carousel.Item>
       <Carousel.Item className="carouselItem">
         <img
-          className="d-block w-100 carouselImg"
+          className="w-100 carouselImg"
           src={home_image2}
           alt="Second slide"
         />
@@ -32,7 +32,7 @@ const CarouselFade = () => {
       </Carousel.Item>
       <Carousel.Item className="carouselItem">
         <img
-          className="d-block w-100 carouselImg"
+          className="w-100 carouselImg"
           src={home_image3}
           alt="Third slide"
         />
