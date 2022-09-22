@@ -1,10 +1,13 @@
 import CartContext from "./cart-context";
 import { useReducer } from "react";
 
+// Define initial state for cart items
 const initialCartState = {
   items: [],
 }
 
+// Define reducer for different action on shopping cart
+// The reducer will execute custom logic to the state according to the action type
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD":
@@ -27,12 +30,15 @@ const cartReducer = (state, action) => {
   }
 };
 
+// Define CartProvider component
 const CartProvider = (props) => {
+  // Define current cart state and dispatch function with useReducer
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
     initialCartState
   );
 
+  // The handler function will pass the action to the reducer function
   const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item});
   };
@@ -45,6 +51,7 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "CLEAR" });
   };
 
+  // Create cart context and pass it with the provider
   const cartContext = {
     items: cartState.items,
     addItem: addItemToCartHandler,
