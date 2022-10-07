@@ -4,6 +4,8 @@ In this tutorial, you will learn React by building an e-commerce website step-by
 
 Each of the section covers a concept of React. You will first be given some simple examples of the concept from React. Then you will learn how it will help us to build specific function in the application.
 
+There are two ways of learning this tutorial. You can either write the codes with the tutorial step-by-step, or jump to read the complete codes first and go back to this tutorial when you get stuck with some points. The complete code is given at the end of each tutorial.
+
 ## React Introduction
 
 React is a open-srouce front-end JavaScript library for building user interfaces, developed and maintained by Facebook.
@@ -282,7 +284,7 @@ function ProductItem(props) {
 export default ProductItem;
 ```
 
-This component is used to display useful information about one product item. You can see the values of these information, such as product name and product price, need to be passed with props.
+This component is used to display useful information about one product item. You can see the values of these information, such as product name and product price, are passed with props.
 
 Next, paste the following styling codes to a new file called `ProductItem.module.css`. You may look up the details if you want to learn more about CSS.
 
@@ -501,8 +503,9 @@ Remember, when you use the `map()` method to create a list, you must specify the
 
 Now, you should see a  product list shown in the home page.
 
-# 02 Working with States
+The complete code of Tutorial 1: https://github.com/lvyin1122/ecommerce-tutorial-code/tree/01-getting-started
 
+# 02 Working with States
 
 
 ## React-Bootstrap
@@ -940,6 +943,8 @@ You may notice a very interesting thing: the parent component `Home` tells the c
 
 However, this approach of passing information is sometimes verbose and inconvenient if you have to pass them through many components in the middle. Another case is that sometimes many components need to access the same global data. We will see how we can solve this problem in the next tutorial.
 
+The complete code of Tutorial 2: https://github.com/lvyin1122/ecommerce-tutorial-code/tree/02-working-with-state
+
 # 03 Building a Cart using Context
 
 In Tutorial 3, you'll take a glance at four significant concepts of React by building the shopping cart feature in our application:
@@ -1329,6 +1334,8 @@ We have implemented a very simple shopping cart which still has a lot of problem
 
 1. The "Remove" button in the `CartItem` componenet is not working. Try to add a `removeCartItem` in `cart-context` and use it in the `CartItem`. The function should receive an `id` argument and remove the corresponding product with that id from the cart state. This requires some knowlege of list manipulation using JavaScript.
 2. The `addCartItem` function in `cart-context` will keep adding products that already exists in the cart. Try to modify the function to avoid duplication. 
+
+The complete code of Tutorial 3: https://github.com/lvyin1122/ecommerce-tutorial-code/tree/03-building-a-cart-using-context
 
 # 04 Connecting to Backend
 
