@@ -1,5 +1,7 @@
-import CartContext from "./cart-context";
-import { useState } from "react";
+import { React, useState } from "react";
+
+// Create the cart context
+const CartContext = React.createContext();
 
 // Define initial state for cart items
 const initialCartState = {
