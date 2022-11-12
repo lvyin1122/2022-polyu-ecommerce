@@ -1,23 +1,29 @@
 # 02 Working with States
 
+In the last tutorial, we have built a neat e-commerce website with a navigation bar and a product list. However, a real application involves a lot of interaction with the user, which means the website should be reactive to the user's action.
 
-## React-Bootstrap
+In this tutorial, you will learn how to add interactivity with **state**. State refers to updatable data that would change over time. Defining and managing states in a web application is probably the most important topic of development with React.
 
-Before we take a deeper dive into React state, let's first learn something about **Bootstrap**.
 
-Building front-end website with HTML and pure CSS is sometimes difficult and time-consuming. As a result, there are many open-source libraries that can simplify the developement.
+## 1 React-Bootstrap
 
-Bootstrap is one of the most popular framework for developing responsive UI design. In this tutorial, we will use some of the exising component in the `react-bootrap` library to develop beautiful UI very quickly.
+Before we dive into React state, let's first learn something about **Bootstrap**.
+
+Building front-end website with pure CSS is sometimes difficult and time-consuming when you have to write styling information by yourself. As a result, there are many open-source libraries that can simplify the developement.
+
+Bootstrap is one of the most popular framework for developing responsive UI design. In this tutorial, we will use some of the exising component in the `react-bootstrap` library to develop beautiful UI very quickly.
+
+Before we start to use `react-bootstrap`, it's better to take a look at the official document first: https://react-bootstrap.github.io/getting-started/introduction/
 
 ### Installation
 
-The first step is to install the dependencies for `react-bootstrap` with npm. Run the following command in your terminal:
+First, you should install the dependencies for `react-bootstrap` with npm. Paste and run the following command in your terminal:
 
 ```
 npm install react-bootstrap bootstrap
 ```
 
-You also need to import the Bootstrap CSS into your project. Add this line of codes into your `App.js` file:
+You also need to import the Bootstrap CSS into your project. Paste this line of code at the begining of your `App.js` file:
 
 ```js
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,11 +31,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ### Adding a Carousel
 
-Now, we can add some components from Bootstrap. Let's add a carousel first. It is a slideshow component for cycling through images or slides of text. You can check the document at https://react-bootstrap.github.io/components/carousel/
+Now, we can start to use some components from Bootstrap. Let's add a **carousel** first. A **carousel** is a slideshow component for cycling through images or slides of text. You can find more with the document at https://react-bootstrap.github.io/components/carousel/
 
-Create a new component called `CarouselFade.js` under the `components` folder and paste the following codes from the official document. This will display a carousel with a fade transition:
+<img src="/Users/heyuwang/Library/Application Support/typora-user-images/image-20221031161521738.png" alt="image-20221031161521738" style="zoom:50%;" />
 
-```js
+Let's first take a look at a example from the document:
+
+```jsx
 import Carousel from 'react-bootstrap/Carousel';
 
 function CarouselFadeExample() {
@@ -79,40 +87,44 @@ function CarouselFadeExample() {
 export default CarouselFadeExample;
 ```
 
-The modified version of our custom carousel is like this:
+In this example, we import the `<Carousel>` component, inside of which there are two types of sub-components: `<Carousel.Item>` and `<Carousel.Caption>`. For each `<Carousel.Item>`, there is a `<img>` element for the slide image and a `<Carousel.Caption>`  component for the text captions. With these components that already built in the `react-bootstrap` library, we can just make several modifications to develop our own carousel. 
 
-```js
+The `fade` attribute inside `<Carousel>` indicates that this carousel use crossfade transition.
+
+`className="d-block w-100"` is equivalent to  `display: block` and `width: 100%` in CSS. This is how you can use Bootstrap to directly style your HTML elements. We won't go deeper with this. You can read more about it at https://www.w3schools.com/bootstrap/default.asp.
+
+Now, let's change a little bit and put it into our home page. Create a file called `CarouselFade.js` under the `components` folder and paste the following codes:
+
+```jsx
 import Carousel from "react-bootstrap/Carousel";
-import styles from "./CarouselFade.module.css";
+import classes from "./CarouselFade.module.css";
 import image1 from "../assets/carousel-img-1.png";
 import image2 from "../assets/carousel-img-2.png";
 import image3 from "../assets/carousel-img-3.png";
 
 function CarouselFade() {
   return (
-    <Carousel fade={true} interval={1000} className={styles.carousel}>
+    <Carousel fade interval={1000} className={classes.carousel}>
       <Carousel.Item>
         <img className="d-block w-100" src={image1} alt="First slide" />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Build your career with iBookStore</h3>
+          <p>Unlock knowledge for your future.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block w-100" src={image2} alt="Second slide" />
-
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Unlimited resources</h3>
+          <p>Explore books and workshops developed by experienced engineers</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block w-100" src={image3} alt="Third slide" />
-
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3>Join our community</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            Ask your questions and share your ideas. We are here to help you.
           </p>
         </Carousel.Caption>
       </Carousel.Item>
@@ -123,31 +135,46 @@ function CarouselFade() {
 export default CarouselFade;
 ```
 
+In this modified version, we first add a attribute called `interval` for the `Carousel` component. This is an API defined within the Bootstrap framework, which allows us to change the time to delay between images when automatically cycling them. Here we set the value to 1000, which means the interval is 1 second. You can find more API from the document:  https://react-bootstrap.github.io/components/carousel/
+
+Also, we need some custom styles with CSS modules. So we import a `carousel` class with `className` for the `Carousel` component.
+
+For the rest of the codes, we just change the `<h3>`, `<p>` and image `src` to our own content. 
+
+Next, let's create the `CarouselFade.module.css` file under the same directory: 
+
 ```css
 .carousel {
-    width: 100%;
+  width: 100%;
 }
 
 .carousel img {
-    height: 400px;
-    object-fit: cover;
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(80%);
 }
 ```
-Please remember to put the images into a new folder called `assets` under `src`. You can find them in the project folder.
+The last step is importing the images for the carousel. You should download the images from our code repository: https://github.com/lvyin1122/ecommerce-tutorial-code/tree/02-working-with-state/src/assets
 
-After you finish these codes, it's time to put it on our home page. You may try to do it yourself as an exercise. Feel free to reference the final codes if you get stuck.
+Put the images under the `src/assets/` directory.
 
-A slideshow like this requires a lot of work on development. Import a component from Bootstrap library makes things much easier.
+After you finish these codes, it's time to put it on our home page. It is a very simple task, so you may try to do it yourself as an exercise. Feel free to reference the final codes if you get stuck.
 
-We can customize the time interval of transition animation with the `interval` attribute. We can also change the animation style with attributes like `fade`. For more information about the APIs of the component, you can reference the official document: https://react-bootstrap.github.io/components/carousel/
+Now, you should have a beatiful carousel at the top of your home page.
+
+<img src="/Users/heyuwang/Library/Application Support/typora-user-images/image-20221101221152346.png" alt="image-20221101221152346" style="zoom: 33%;" />
+
+With just a few adjustments, we can attain a very pretty component. This is how the third-party component library saves your developement time.
 
 ### Adding a Pagination
 
-Our current prduct list shows too many produt in one page. We are going to add a pagination component in this section to solve this problem, which can divide the whole product list into several pages.
+Our current product list shows too many produt in one page. We are going to add a **pagination** component in this section to solve this problem, which can separate the whole product list into several pages.
 
 The first thing is always about reading the official document: https://react-bootstrap.github.io/components/pagination/. Let's take a look at the official example first:
 
-```js
+<img src="/Users/heyuwang/Library/Application Support/typora-user-images/image-20221108161640567.png" alt="image-20221108161640567" style="zoom:50%;" />
+
+```jsx
 import Pagination from 'react-bootstrap/Pagination';
 
 let active = 2;
@@ -175,13 +202,13 @@ const paginationBasic = (
 render(paginationBasic);
 ```
 
-The `Pagination` component represents the whole pagination component, inside of which there are several `Pagination.Item` component displaying each block of the page number. It uses a for-loop to push all the pagination item componenet as a list, just like what we did in the previous **Lists** section. The `active` varaible is defined as the current page number.
+To create a complete pagination element, we can first create a list of `<Pagination.Item>`. Each of pagination item shows one page number. Therefore, to create the list, we can simpliy use a for loop to give each item a corresponding page number. In this example, three pagination components with different sizes are created. For each `<Pagination.Item>`, when the value of attribute `active` is true, the item will be highlighted, as shown in the image above. For this example, the active page number is fixed to 2.
 
-For each `Pagination.Item` component, the `key` attribute stands for the key number of this item. When the value of the `active` attribute is true, the component will be styled as a selected pagination item. So, in this example, the active page is always page 2.
+Now, let's put a pagination component into our project. You may try to finish it yourself first. 
 
-Now, let's put it into our project. You may try to finish it yourself first. The complete code is shown below:
+The complete code is shown below:
 
-```js
+```jsx
 import React from "react";
 import ProductItem from "../../components/ProductItem";
 import CarouselFade from "../../components/CarouselFade";
@@ -191,15 +218,17 @@ import data from "../../productsData";
 import Pagination from "react-bootstrap/Pagination";
 
 function Home() {
-  // Variables for the pagination
+  // Active page number
   let active = 1;
+  // Create a list
   let items = [];
-  // Let's say that each page contains 6 items
+  // limit = 6, meaning we will have 6 products in one page at most
   const limit = 6;
   // Compute the number of pages from the number of products
   const pageNum = Math.ceil(data.length / limit);
-  // Create a list of Pagination.Item
+  // Create a list of Pagination.Item using a for loop
   for (let number = 1; number <= pageNum; number++) {
+    // Use push() method to add new item to the list
     items.push(
       <Pagination.Item key={number} active={number === active}>
         {number}
@@ -208,7 +237,7 @@ function Home() {
   }
 
   // Create the Pagination component
-  const Pagination = <Pagination size="lg">{items}</Pagination>;
+  const pagination = <Pagination size="lg">{items}</Pagination>;
 
   const productsList = data.map((data) => (
     <ProductItem
@@ -217,7 +246,7 @@ function Home() {
       name={data.name}
       author={data.author}
       price={data.price}
-      imgSrc={data.imgSrc}
+      image={data.image}
     />
   ));
 
@@ -228,7 +257,7 @@ function Home() {
         <CarouselFade />
         <h1>Our Products</h1>
         <div className={classes.productsContainer}>{productsList}</div>
-        {Pagination}
+        {pagination}
       </div>
     </div>
   );
@@ -237,13 +266,17 @@ function Home() {
 export default Home;
 ```
 
-You should see a Pagination showing two pages at the bottom of our home page. But currently, it is just a static UI without any functionalities. In the following sections, we will learn how to generate some interactive elements in our project by learning about two core concepts of React: state and hooks.
+You should now see a Pagination showing two pages at the bottom of our home page. But currently, it is just a static UI without any functionalities. In the following sections, we will learn how to generate some interactive elements in our project by learning about two core concepts of React: state and hooks.
 
-## Managing States with "useState" Hook
+<img src="/Users/heyuwang/Library/Application Support/typora-user-images/image-20221108163500702.png" alt="image-20221108163500702" style="zoom: 25%;" />
 
-"State" means any data or properties that need to be tracking in your application. Let's first look at a simple example:
+## 2 Managing States with "useState" Hook
 
-```js
+"State" means any data or properties that need to be tracking in your application. 
+
+Let's first look at a simple example:
+
+```jsx
 import React from "react";
 
 function Counter() {
@@ -257,11 +290,13 @@ function Counter() {
 export default Counter;
 ```
 
-Here, we want to make a counter that counts the number of clicks the button from user. The application should be working like this:
+Here, we want to make a counter that counts the number of clicks the button from user. 
 
-1. Handle the click event from user
-2. Change the value of `number`
-3. Re-render the component to update the number displayed
+The application should be working like this:
+
+1. Handle the click event when the user click the button
+2. Change the value of `count`
+3. Re-render the button element to show the latest value of `count`
 
 The React-style way of doing these tasks is using the `useState` Hook. Let's take a look at the codes first:
 
@@ -289,19 +324,25 @@ export default Counter;
 
 First, we should use the `useState` hook to initilize the state of count. 
 
-The `useState` hook receives one argument: the initial state. Here, we initilze the `count` state as a 0 number. You can also initialize it in other types, such as string or object.
+The `useState` hook receives one argument: the initial value of the state. Here, we initilze the `count` state as a number 0. A state can also be initilized in any other types, such as string and object.
 
-The `useState` hook will return a pair of values: the current state and a function that can update it. In this example, we get a `count` state with a value of 0 and the `setCount` function that updates it. The value received by the `setCount` function will be the updated value of the state.
+The `useState` hook will return a pair of values: (1) the state variable:  `count`, and (2) the function that can update the value of the state: `setCount`. In this example, we get a `count` state with a value of 0 and the `setCount` function that updates it. 
 
-Then, we can use the `setCount` function to describe the actions after the user clicks the button. Here, the `onClick` attribute of the button must receive a function varaible as the event handler, so we can define a handler function `clickHandler` first. We let the handler function update the value of count by adding one with `setCount`.
+When we want to update the state to a new value, we can now simpliy call the `setCount` function. Say we want to set the `count` to 2, we just write `setCount(2)`. 
 
-Instead of pass a specific value to `setCount` function, you can also pass a function. This is often used to gurantee the state is changed strictly based on the previous state:
+The advantage of `useState` for changing variables is: when you update the state with the update function, React will "know" it and re-render the component at once.
 
-```js
+Now, we can use the `setCount` function to describe the actions after the user clicks the button. Here, the `onClick` attribute of the button must receive a function variable as the event handler, so we should define a handler function `clickHandler` first. We let the handler function update the value of count by adding one to original value.
+
+Instead of pass the state value to `setCount` function, you can also pass a function. This is often used to gurantee the state is changed strictly based on the previous state:
+
+```jsx
   const clickHandler = () => {
     setCount(prevState =>  prevState + 1);
   };
 ```
+
+`prevState => prevState + 1` is an anonymous function (arrow function) that receives a `prevState` parameter and returns the value of `prevState + 1`. To check with more examples, you can go to https://reactjs.org/docs/hooks-reference.html#usestate.
 
 After the value of `count` is change by `setCount`, React will re-render the page with the new value. 
 
@@ -313,15 +354,15 @@ Now, it's time to add state management to our Pagination componenet. It is quite
 
 Let's build it step by step.
 
-The first thing we need to do is convert the original `active` variable to a React state. Let's name it as `page` to avoid confusion. 
+The first thing we need to do is add a state to the `active` attribute, so that we can change the active page. Let's name it as `page` to indicate the current page number. 
 
 ```js
 const [page, setPage] = useState(1);
 ```
 
-When when click on a `Pagination.Item`, it should set the page number to the key number shown on it, which is defined during the for loop. Therefore, we can write the codes like this:
+When when click on a `Pagination.Item`, it should set the page number to the page number shown on it, which is defined during the for loop. Therefore, we can write the codes like this:
 
-```js
+```jsx
 for (let number = 1; number <= pageNum; number++) {
   items.push(
     <Pagination.Item key={number} active={number === page} onClick={() =>  setPage(number)}>
@@ -347,14 +388,14 @@ const productsList = currentData.map((data) => (
     name={data.name}
     author={data.author}
     price={data.price}
-    imgSrc={data.imgSrc}
+    image={data.image}
   />
 ));
 ```
 
 At last, remember that it is preferred to build you custom component and make it reusable, which can also bring simplicity and readablility to our codes. We can define our customized Pagination componenet as follows:
 
-```js
+```jsx
 import React from "react";
 import { Pagination } from "react-bootstrap";
 
@@ -384,7 +425,7 @@ export default PaginationBasic;
 
 You may notice that we need to pass three props to this component: `pageCount`, `page` (the active page), and the `setPage` function. We should pass these props from `Home.js`:
 
-```js
+```jsx
 import React, { useState } from "react";
 import ProductItem from "../../components/ProductItem";
 import CarouselFade from "../../components/CarouselFade";
@@ -411,7 +452,7 @@ function Home() {
       name={data.name}
       author={data.author}
       price={data.price}
-      imgSrc={data.imgSrc}
+      image={data.image}
     />
   ));
 
@@ -432,7 +473,11 @@ export default Home;
 
 If we want to change the number of products shown in one page, or create the same pagination for other pages, we don't need to change the codes inside the `PaginationBasic.js`.
 
-You may notice a very interesting thing: the parent component `Home` tells the current active page number to the `PaginationBasic` component through the `page` prop, while the child component `PagniationBasic` tells its parent component `Home` that the page number is changed by calling the `setPage` function prop. This is a very common way of building a two-way communication between a pair of parent and child components.
+Now, we have built a home page with a workable pagination bar. You can click on the page number to switch between pages.
+
+<img src="/Users/heyuwang/Library/Application Support/typora-user-images/image-20221108173915241.png" alt="image-20221108173915241" style="zoom:25%;" />
+
+You may notice a very interesting thing: the parent component `Home` tells the current active page number to the child component  `PaginationBasic` through the `page` prop, while the child component `PagniationBasic` tells its parent component `Home` that the page number is changed by calling the `setPage` function passed by prop. This is a very common way of building a two-way communication between a pair of parent and child components.
 
 However, this approach of passing information is sometimes verbose and inconvenient if you have to pass them through many components in the middle. Another case is that sometimes many components need to access the same global data. We will see how we can solve this problem in the next tutorial.
 

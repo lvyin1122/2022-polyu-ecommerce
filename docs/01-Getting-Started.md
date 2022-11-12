@@ -2,11 +2,19 @@
 
 In this tutorial, you will learn React by building an e-commerce website step-by-step.
 
+To learn React better and understand this tutorial faster, you'd better first have some basic knowledge about web development using HTML, CSS, and JavaScript. Here are some useful resources to have a quick review of the knowledge, make sure you can have a basic idea about these concepts:
+
+- HTML: https://www.w3schools.com/html/
+- CSS: https://www.w3schools.com/css/
+- JavaScript (espectially **functions** and **modules**): https://www.w3schools.com/js/
+
+It is also recommended to go with our tutorials first and reference these websites when you need help.
+
 Each of the section covers a concept of React. You will first be given some simple examples of the concept from React. Then you will learn how it will help us to build specific function in the application.
 
-There are two ways of learning this tutorial. You can either write the codes with the tutorial step-by-step, or jump to read the complete codes first and go back to this tutorial when you get stuck with some points. The complete code is given at the end of each tutorial.
+There are two ways of learning this tutorial. You can either write the codes with the tutorial step-by-step, or jump to read the complete codes first and go back to this tutorial when you get stuck with some part. The complete code is given at the end of each tutorial.
 
-## React Introduction
+## 1 React Introduction
 
 React is a open-srouce front-end JavaScript library for building user interfaces, developed and maintained by Facebook.
 
@@ -17,19 +25,30 @@ As a modern front-end framework, React can boost the process of development with
 - Reusable components
 - Cross-platform
 
-## Getting Started
+## 2 Getting Started
 
 ### Create a React Project
 
-First, make sure you have installed Node.js and npm for package management.
+Before we start building application with React, make sure you have installed Node.js and npm (Node Package Manager) on your computer. You can download the installer from this page: https://nodejs.org/en/download/
 
-You can create your first React application by running this commmand with `create-react-app`:
+After installation, you can open your command prompt (or Terminal on Mac) and enter the following:
+
+```
+node -v
+npm -v
+```
+
+The system should display the versions of Node and npm.
+
+Now, it's time to create your first React application by running the following command:
 
 ```terminal
 npx create-react-app ecommerce
 ```
 
-Here we name the project as `ecommerce`.
+`npx` is an npm package runner. Here, we use `npx` to execute the `create-react-app` package, which creates a boilerplate project with React for us.
+
+`ecommerce` is the name of the project we created. You can also change it to other names if you like.
 
 ### Run the React Application
 
@@ -40,51 +59,38 @@ cd ecommerce
 npm start
 ```
 
-Your browser will pop up a new window called React App. You can also access the website with the address `localhost:3000`.
+Your computer will pop up a new browser window called *React App*. You can also access the website by entering the address `localhost:3000`. Right now, the website looks like this:
 
+<img src="/Users/heyuwang/Library/Application Support/typora-user-images/image-20221026161543500.png" alt="image-20221026161543500" style="zoom: 25%;" />
 
+We will build our own web application in the following steps.
 
-## JSX
+## 3 JSX
 
-JSX is a syntax extension to JavaScript.
+**JSX** is a syntax extension to JavaScript.
 
-In React, we usually use JSX to describe what the UI should look like instead of using pure HTML. It allows us to write HTML directly in JavaScript. Also, we can use JavaScript expressions inside the HTML elements.
+In React, we use JSX to describe what the UI should look like instead of using pure HTML. It allows us to write HTML directly in JavaScript. Also, we can put JavaScript expressions into the HTML elements. `const`
 
-In the initial project we just created, we can find a file called `App.js` under the `src` directory.
+Here's an example:
 
-```javascript
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+```jsx
+const element = <h1>Hello World!</h1>;
 ```
 
-Here, `App` is called a React component. It returns what we will see on the screen by `return`.
+This statement declares a constant variable called `element`, whose value is written with JSX. It looks like HTML but actually produces React "elements" that can be rendered by React. We can also embed JavaScript expressions inside JSX using curly braces:
 
-The whole value returned by `App` is written with JSX. Let's modify it to a simplier example:
+```jsx
+const hello = "Hello World!";
+const element = <h1>{hello}</h1>;
+```
 
-```js
+Here, we embed the value of the string variable `hello` into an `<h1>` element with curly braces, which can produce the same result as the previous example.
+
+Now, it's time to see how we can use JSX in the project we just created. Let's find the file called `App.js` under the `ecommerce/src` folder.
+
+To make it simple, delete all the existing codes and paste the following:
+
+```jsx
 function App() {
   const hello = "Hello World!"
   return (
@@ -97,13 +103,15 @@ function App() {
 export default App;
 ```
 
-Now, you should see "Hello World!" on your website.
+Save the file, and you should see the text "Hello World!" displayed on the website.
 
-The advantage of JSX is that we can use any JavaScript expression inside JSX by wrapping it with curly braces. Here, we define a `hello` string variable and insert it with JSX.
+![image-20221026165738982](/Users/heyuwang/Library/Application Support/typora-user-images/image-20221026165738982.png)
 
-We can also write it like this, which is equivalent:
+In this example, we created a JavaScript function called `App`, which is a root **component** of our application. This component returns a `<div>` element with JSX syntax, which is exactly the same as our previous example. The returned elements will be rendered by React and displayed on the screen.
 
-```js
+We can also write it like this, where we create a new element variable and embed it to the `<div>` element:
+
+```jsx
 function App() {
   const hello = "Hello World!";
   const element = <h1>{hello}</h1>;
@@ -117,21 +125,19 @@ function App() {
 export default App;
 ```
 
-## Components and Props
+## 4 Components and Props
 
-Components are one of the core concepts of React. They are the foundation upon which you build your user interface.
+**Components** and **props** are the core concepts of React. They are the foundation upon which you build your user interface.
 
-Component allows you to combine your HTML, CSS styling, and JavaScrtip into one custom reusable UI element.
+Component allows you to combine your HTML, CSS styling, and JavaScript into one custom reusable UI element.
 
-Let's build our first component of the ecommerce applcation: a top navigation bar.
+We just created the root component `App` for our application. Now, let's learn more about components by building a simple UI element on our website: a top navigation bar.
 
-First let's create a new directory: `src\components\`. We will put all the created components in this folder.
+First, let's create a new folder called `components` under the `src` folder. We will put all of our components in this folder.
 
-Now, let's create a new JavaScript file called `Navbar.js`.
+Now, we can create a new JavaScript file called `Navbar.js` and paste the following:
 
-```js
-import React from "react";
-
+```jsx
 function Navbar() {
   return (
     <div>
@@ -141,12 +147,16 @@ function Navbar() {
   );
 }
 
+// Export the component
 export default Navbar;
 ```
 
-In this file, we create a new component called Navbar and export it. Now, we can directly use it in `App.js`.
+This `Navbar` component will show two pieces of text. One is for our brand name (iBookStore as an example), and one is for a button that should redirect the website to the shopping cart.
 
-```js
+Now, we can import the `Navbar` component into  `App` and put it into the `return` function to render it.
+
+```jsx
+// Import the component
 import Navbar from "./components/Navbar"
 
 function App() {
@@ -160,13 +170,11 @@ function App() {
 export default App;
 ```
 
-Remember to import your custom component before you use it.
+In modern React, every componet is usually defined as a function. A React component can accept input data through arguments, just like a function. The object argument of a component is called "props" (which stands for properties).
 
-We can also pass values to a component with props. Components are like functions, and props are like the inputs to the function. It allows communication between React components.
+Let's take a look at how we can use props in  `Navbar.js`:
 
-Let's use props in `Navbar.js`:
-
-```js
+```jsx
 function Navbar(props) {
   return (
     <div>
@@ -177,9 +185,11 @@ function Navbar(props) {
 }
 ```
 
-We can pass the value of the brand name to `Navbar` component by adding a `brand` attribute to `<Navbar />` in `App.js`:
+Here, the `props`  is an object argument that passes data to the `Navbar` component. In the returned element, we retrieve a `brand` property from the props, which should be specified when we want to use the component.
 
-```js
+Let's specify the value of the brand property from `App` component.
+
+```jsx
 import Navbar from "./components/Navbar"
 
 function App() {
@@ -193,13 +203,15 @@ function App() {
 export default App;
 ```
 
-Now, if we want to modify the brand name or create another website with the same nagivation bar, we don't need to change the codes in `Navbar.js`. This is how components and props make it resuable and improve the development. We will learn more about it in next tutorials.
+We add a `brand` attribute to the `<Navbar>`, so that the `Navbar` component will receive the string value through `props`.
 
-## CSS Styling
+Now, if we want to modify the brand name or create another website with the same navigation bar, we don't need to change the codes in `Navbar.js`. This is how components and props make it reusable and improve development speed. We will learn more about it in the following tutorials.
 
-Currently, our `Navbar` only shows two lines of texts. To make it look like a navigation bar, we need to style it with CSS.
+## 5 CSS Styling
 
-In React, there are many ways to add styling information to the elements. In our project, we will choose a more common and convenient method: CSS modules.
+Currently, our `Navbar` only shows two lines of texts. To make it look like a navigation bar, we need to add some styles.
+
+In React, there are many ways to add styling information to the UI elements. In our project, we will choose a more common and convenient method: **CSS Modules**.
 
 Create a new file called `Navbar.module.css` and paste the following codes:
 
@@ -230,10 +242,13 @@ Create a new file called `Navbar.module.css` and paste the following codes:
 
 ```
 
-Now, let's import these styling information to the `Navbar` component
+The syntax of CSS Modules has no difference with CSS. Each block of code is a CSS **class**. And each class is used to style the corresponding element we created perviously.
 
-```js
+Now, let's import these styles to our `Navbar` component:
+
+```jsx
 import React from "react";
+// Import the styles from the CSS file
 import classes from "./Navbar.module.css";
 
 
@@ -249,30 +264,54 @@ function Navbar(props) {
 export default Navbar;
 ```
 
-Here, we first import the stylesheet as a `classes` variable. Then we assign the CSS classes to corresponding element as attributes. For example, if we want to assign the `navbar`, we just write `className={classes.navbar}`.
+Here, we first import the stylesheet as a `classes` object variable. Then we assign the CSS classes to the corresponding elements through the `className` attribute. For example, if we want to use the `.navbar` class style, we just write `className={classes.navbar}`.
 
-Now, we have got a neat navigation bar on the top of our website.
+Now, we have a neat navigation bar on the top of our website.
 
-## Lists
+![image-20221027111327253](/Users/heyuwang/Library/Application Support/typora-user-images/image-20221027111327253.png)
 
-Sometimes, we need to render a list of elements with React. In this section, we will learn how to build a product list with components and loop.
+## 6 Lists
+
+Sometimes, we need to render one component for multiple times in an ordered format. For example, a list of products. In React, we generally use the JavaScript `map()` method. Let's first look at a simple example:
+
+```jsx
+const numbers = [1, 2, 3, 4, 5]
+const list = numbers.map((number) 
+=> 
+  <p>{number}</p>
+);
+```
+
+In this example, the `map()` method will map each of the number in the `numbers` list to a `<p>` element. The result is equivalent to this:
+
+```html
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+```
+
+Similarly, we're gonna add a product list to our home page. 
+
+For this tutorial, the products we're selling are e-books. Each e-book has 5 properties: id, name, author, price, and image.
 
 First, let's create a `ProductItem` component under the `components` file:
 
-```js
+```jsx
 import React from "react";
-import styles from "./ProductItem.module.css";
+import classes from "./ProductItem.module.css";
 
 function ProductItem(props) {
   return (
-    <div className={styles.productItem}>
-      <img src={props.imgSrc} alt="" />
-      <div className={styles.productInfo}>
+    <div className={classes.productItem}>
+      <img src={props.image} alt="" />
+      <div className={classes.productInfo}>
         <h1>{props.name}</h1>
-        <div className={styles.infoBottom}>
-          <div className={styles.infoLeft}>
-            <span className={styles.author}>{props.author}</span>
-            <span className={styles.price}>{props.price}</span>
+        <div className={classes.infoBottom}>
+          <div className={classes.infoLeft}>
+            <span className={classes.author}>{props.author}</span>
+            <span className={classes.price}>${props.price}</span>
           </div>
           <button>Add to cart</button>
         </div>
@@ -284,9 +323,11 @@ function ProductItem(props) {
 export default ProductItem;
 ```
 
-This component is used to display useful information about one product item. You can see the values of these information, such as product name and product price, are passed with props.
+Here, we defined a component called `ProductItem`. It requires product properties including `image`, `author`, and `price`. It uses the CSS classes to style the elements.
 
-Next, paste the following styling codes to a new file called `ProductItem.module.css`. You may look up the details if you want to learn more about CSS.
+You may feel overwhelmed with this much of codes. Don't be afraid. Read it through and you will find that it is just a complicated example with the same concepts we just learned. It is also good to read the complete codes first and check the details afterwards.
+
+Next, paste the following styling codes to a new file called `ProductItem.module.css` under the same folder. You may look up the details if you want to learn more about CSS.
 
 ```css
 .productItem {
@@ -353,7 +394,11 @@ Next, paste the following styling codes to a new file called `ProductItem.module
 }
 ```
 
-Before we build the product list, we should add some fake prduct data to display. In a real application, the data is retrieved from back-end server. Here, we just put these data into a separate JavaScrtip file under the `src` folder. Let's call it `productsData.js`:
+With the codes above, a `ProductItem` will be look like this:
+
+<img src="/Users/heyuwang/Library/Application Support/typora-user-images/image-20221030110315877.png" alt="image-20221030110315877" style="zoom:50%;" />
+
+We have built the component for each product. Now, we need a list of product data. In a real application, the data is retrieved from back-end server. Here, we just put some fake data into a separate JavaScrtip file under the `src` folder. Let's call it `productsData.js`:
 
 ```js
 const data = [
@@ -362,7 +407,7 @@ const data = [
       name: "React: From Beginner to Expert",
       author: "John Doe",
       price: 9.99,
-      imgSrc:
+      image:
         "https://cdn.thenewstack.io/media/2022/05/600b72f9-react-1024x680.png",
     },
     {
@@ -370,7 +415,7 @@ const data = [
       name: "Neural Networks from Scratch",
       author: "John Smith",
       price: 9.99,
-      imgSrc:
+      image:
         "https://7wdata.be/wp-content/uploads/2020/11/What-is-an-Artificial-Neural-Networks.png",
     },
     {
@@ -378,55 +423,55 @@ const data = [
       name: "JavaScript: The Complete Guide",
       author: "Stephen Lee",
       price: 9.99,
-      imgSrc:
+      image:
         "https://repository-images.githubusercontent.com/229449376/3cfde400-5298-11ea-9f39-aab161ef8f69",
     },
     {
       id: 3,
       name: "NodeJS Bootcamp",
-      author: "John Doe",
+      author: "Susan Williams",
       price: 13.99,
-      imgSrc:
+      image:
         "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
     },
     {
       id: 4,
       name: "The Complete iOS Development Bootcamp",
-      author: "John Doe",
+      author: "Allen Brown",
       price: 9.99,
-      imgSrc: "https://miro.medium.com/max/730/1*ND2d6CvH-Cz0dp5I_tYalQ.png",
+      image: "https://miro.medium.com/max/730/1*ND2d6CvH-Cz0dp5I_tYalQ.png",
     },
     {
       id: 5,
       name: "Python: Zero to Mastery",
-      author: "John Doe",
+      author: "Robert Simmons",
       price: 10.99,
-      imgSrc:
+      image:
         "https://bytesofintelligence.co.uk/wp-content/uploads/2021/06/python.jpeg",
     },
     {
       id: 6,
-      name: "Example7",
-      author: "John Doe",
+      name: "C++ Programming Language",
+      author: "Steven Bell",
       price: 13.99,
-      imgSrc:
-        "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
+      image:
+        "https://res.cloudinary.com/practicaldev/image/fetch/s--Tu2z9cvG--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://miro.medium.com/max/696/1%2A6UpwEDOw04H5fKyaMGXpSw.png",
     },
     {
       id: 7,
-      name: "Example8",
-      author: "John Doe",
+      name: "Parallel Programming in Java",
+      author: "Jenny Morris",
       price: 9.99,
-      imgSrc:
-        "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
+      image:
+        "https://mindqsystems.com/wp-content/uploads/2019/08/Core-Java-Training.jpg",
     },
     {
       id: 8,
-      name: "Example9",
-      author: "John Doe",
+      name: "Spring Framework Maserclass",
+      author: "Rose Goodman",
       price: 10.99,
-      imgSrc:
-        "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
+      image:
+        "https://spring.io/images/OG-Spring.png",
     },
   ];
   
@@ -434,9 +479,11 @@ const data = [
   
 ```
 
-Now, we can finally build our product list. Let's create a componenet called `Home` to describe the home page and put the product list into it.
+Now, we can finally build our product list.
 
-```js
+Here, we create a new component called `Home` to display our home page. 
+
+```jsx
 import React from "react";
 import ProductItem from "../../components/ProductItem";
 import classes from "./Home.module.css";
@@ -467,7 +514,9 @@ function Home() {
 export default Home;
 ```
 
-Paste these codes into `Home.module.css`:
+In the `Home` component, we create a product list with the `map()` method, which assign each of the value in the `data` to a corresponding `ProductItem`. For each `ProductItem`, the product information is passed with `props`. Note that when you use `map()` to create a list of components, you must pass a value for the `key` attribute, which should be a unique identifier that helps React identify the items. In our example, we can directly use the `id` in the data as the key value.
+
+Also remember to paste these codes into `Home.module.css` for styling:
 
 ```css
 .home {
@@ -497,10 +546,8 @@ Paste these codes into `Home.module.css`:
 }
 ```
 
-The JavaScript `map()` method is generally the preferred way to render the list in React. In this example, we render the product data by mapping each of the product to one `ProductItem` component. We also pass all the information with props.
-
-Remember, when you use the `map()` method to create a list, you must specify the `key` attribute to allow React to keep track of elements in lists.
-
 Now, you should see a  product list shown in the home page.
+
+![image-20221030105805090](/Users/heyuwang/Library/Application Support/typora-user-images/image-20221030105805090.png)
 
 The complete code of Tutorial 1: https://github.com/lvyin1122/ecommerce-tutorial-code/tree/01-getting-started
